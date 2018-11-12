@@ -18,8 +18,8 @@ export class GiphyApiService {
 
   giphCall = (keyWord: string) => {
     this.userRequest = this.giphyRequest + keyWord + '&api_key=' + this.apiKey;
-    this.results = this.http.get(this.userRequest);
-    console.log('this results in api call: ', this.results);
+    this.results = this.http.get(this.userRequest).subscribe(function(data) { console.log('data: ', data); });
+    console.log('this results in api call: ', this.results.data);
     return this.results;
   }
 
