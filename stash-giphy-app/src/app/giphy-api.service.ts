@@ -18,9 +18,23 @@ export class GiphyApiService {
 
   giphCall = (keyWord: string) => {
     this.userRequest = this.giphyRequest + keyWord + '&api_key=' + this.apiKey;
-    this.results = this.http.get(this.userRequest).subscribe(function(data) { console.log('data: ', data); });
-    console.log('this results in api call: ', this.results.data);
-    return this.results;
+    this.results = this.http.get(this.userRequest).subscribe(function(data) { 
+      console.log('data: ', data); 
+    });
+    console.log('this results in api call: ', this.results);
+
+    let self = this;
+
+    return new Promise((resolve, reject) => {
+      // const xhr = new XMLHttpRequest();
+      // xhr.open("GET", url);
+      // xhr.onload = () => resolve(xhr.responseText);
+      // xhr.onerror = () => reject(xhr.statusText);
+      // xhr.send();
+      self.http.get(this.userRequest).subscribe(function(data) {
+        resolve(data)
+      })
+    });
   }
 
   displayResults = () => {

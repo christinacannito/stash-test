@@ -8,6 +8,7 @@ import { GiphyApiService } from '../giphy-api.service';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
+  resultKeys = Object.keys;
   results;
   searchWord;
 
@@ -26,8 +27,12 @@ export class ResultsComponent implements OnInit {
 
   submit = () => {
     console.log('search word: ', this.searchWord);
-    this.results = this.gifservice.giphCall(this.searchWord);
-    console.log('this.results in submit: ', this.results);
-    return this.results;
+    let self = this;
+    this.gifservice.giphCall(this.searchWord).then(function(data){
+      console.log('now in a promise, data: ', data['data']); // this is an array 
+      self.results = data['data']
+      console.log('zero index: ', self.results[0])
+      return self.results;
+    });
   }
 }
