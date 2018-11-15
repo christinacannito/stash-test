@@ -5,8 +5,19 @@
       <input type="text" placeholder="Search" name="searchWord" [(ngModel)]="searchWord">
       <button (click)="submit()">Search</button>
     </form>
-    <div *ngFor="let result of results; let i = index">
-        <img src="{{result['embed_url']}}">
+    <div *ngFor="let result of results;">
+      <div class="imageContainer">
+        <img id="{{result['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{result['images']['preview_gif']['url']}}">
+      </div>  
+    </div>
+  </article>
+  <article>
+    <!-- display favorites -->
+    <button (click)="showFavoriteItems()">Show favorites</button>
+    <div *ngFor="let favorite of allFavorites;">
+      <div class="imageContainer">
+        <img id="{{favorite['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{favorite['images']['preview_gif']['url']}}">
+      </div>  
     </div>
   </article>
 </section>
