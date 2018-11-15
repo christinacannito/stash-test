@@ -49,8 +49,10 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {
     // on init you want to see what the user has requested
     // this.results = this.gifservice.displayResults();
-    console.log('results: ', this.results);
+    // console.log('results: ', this.results);
     // the results view will have a ng if looping through the results
+    // generate random gif 
+    this.gifservice.random()
   }
 
   deleteFromLocalStorage = () => {
