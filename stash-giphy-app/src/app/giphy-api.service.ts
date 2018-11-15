@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GiphyApiService {
   apiKey = 'TzPDDmLNeHPtLo29ejVY6oOQEZxMHI1l';
-  // giphyRequest = 'http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=';
   giphyRequest = 'http://api.giphy.com/v1/gifs/search?q=';
   fullRequestUrl = this.giphyRequest + this.apiKey;
   userRequest = '';
@@ -26,11 +25,6 @@ export class GiphyApiService {
     let self = this;
 
     return new Promise((resolve, reject) => {
-      // const xhr = new XMLHttpRequest();
-      // xhr.open("GET", url);
-      // xhr.onload = () => resolve(xhr.responseText);
-      // xhr.onerror = () => reject(xhr.statusText);
-      // xhr.send();
       self.http.get(this.userRequest).subscribe(function(data) {
         resolve(data)
       })

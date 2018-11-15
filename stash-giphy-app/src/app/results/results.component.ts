@@ -22,10 +22,6 @@ export class ResultsComponent implements OnInit {
   public addToFavorites(favoriteGifObject: object): void {
     //get array of tasks from local storage
     const favoriteGif = this.storage.get(this.localStorageKey) || [];
-    // push new task to array
-    // favoriteGif.push({
-    //    title: taskTitle
-    // });
     favoriteGif.push(favoriteGifObject)
     // insert updated array to local storage
     this.storage.set(this.localStorageKey, favoriteGif);
@@ -37,10 +33,6 @@ export class ResultsComponent implements OnInit {
     this.allFavorites = this.storage.get(this.localStorageKey)
     console.log('all favorites: ', this.allFavorites)
     return this.allFavorites;
-  }
-
-  deleteFromLocalStorage = () => {
-    this.storage.remove(this.localStorageKey) // remove the individual item
   }
 
   ngOnInit() {

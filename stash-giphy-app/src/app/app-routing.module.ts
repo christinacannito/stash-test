@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { AppComponent } from './app.component';
+import { ResultsComponent } from './results/results.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
-  {path: 'favorites', component: FavoritesComponent}
+  {path: '', component: ResultsComponent},
+  {path: 'favorites', component: FavoritesComponent},
+  {path: '**', component: NotfoundComponent}
 ];
 
 @NgModule({

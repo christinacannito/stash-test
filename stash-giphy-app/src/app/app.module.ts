@@ -10,13 +10,17 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { ResultsComponent } from './results/results.component';
 import { SearchDirective } from './search/search.directive';
 import { GiphyApiService } from './giphy-api.service';
+import { NavigationComponent } from './navigation/navigation.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FavoritesComponent,
     ResultsComponent,
-    SearchDirective
+    SearchDirective,
+    NavigationComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

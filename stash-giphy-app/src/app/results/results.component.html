@@ -12,12 +12,7 @@
     </div>
   </article>
   <article>
-    <!-- display favorites -->
-    <button (click)="showFavoriteItems()">Show favorites</button>
-    <div *ngFor="let favorite of allFavorites;">
-      <div class="imageContainer">
-        <img id="{{favorite['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{favorite['images']['preview_gif']['url']}}">
-      </div>  
-    </div>
+    <p>clear storage</p>
+    <button (click)="deleteFromLocalStorage()">Clear storage</button>
   </article>
 </section>
