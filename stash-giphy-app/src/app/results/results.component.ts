@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject, Injectable  } from '@angular/core';
 import { GiphyApiService } from '../giphy-api.service';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
-import { element } from '@angular/core/src/render3';
 
 
 @Component({
@@ -43,16 +42,6 @@ export class ResultsComponent implements OnInit {
       favoriteGif.push(favoriteGifObject);
       this.storage.set(this.localStorageKey, favoriteGif);
     }
-    
-
-    // if the element has the attribute 'disabled' then don't push it to favorites again 
-    // if(elementClicked.hasAttribute('disabled') === false) {
-      // it has already been added to favorite so don't do that again :) 
-      // elementClicked.setAttribute('disabled', 'disabled')
-      // favoriteGif.push(favoriteGifObject)
-      // insert updated array to local storage
-      // this.storage.set(this.localStorageKey, favoriteGif);
-    // }
     
     console.log(this.storage.get(this.localStorageKey) || 'LocaL storage is empty');
   }
