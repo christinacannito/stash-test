@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, Injectable  } from '@angular/core';
 import { GiphyApiService } from '../giphy-api.service';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
+import { element } from '@angular/core/src/render3';
 
 
 @Component({
@@ -22,17 +23,38 @@ export class ResultsComponent implements OnInit {
   public addToFavorites(favoriteGifObject: object): void {
     //get array of tasks from local storage
     const favoriteGif = this.storage.get(this.localStorageKey) || [];
-    favoriteGif.push(favoriteGifObject)
-    // insert updated array to local storage
-    this.storage.set(this.localStorageKey, favoriteGif);
-    console.log(this.storage.get(this.localStorageKey) || 'LocaL storage is empty');
-  }
+    // the gif already is in favorites DO NOT push again 
+    console.log('favoriteGif.indexOf(favoriteGifObject): ', favoriteGif.indexOf(favoriteGifObject))
+    // you might have to loop through the array and go based on id 
+    console.log('favoriteGif[0] === favoriteGif[1]: ', favoriteGif[0] == favoriteGif[1])
+    // let elementClicked = document.getElementById(favoriteGifObject['id']);
+    // console.log('element clicked: ', elementClicked)
 
-  showFavoriteItems = () => {
-    // returns what was in local storage
-    this.allFavorites = this.storage.get(this.localStorageKey)
-    console.log('all favorites: ', this.allFavorites)
-    return this.allFavorites;
+    // you have to do a check for local storage
+    let found: boolean = false;
+    for(let i = 0; i < favoriteGif.length; i++) {
+      if(favoriteGif[i]['id'] === favoriteGifObject['id']){
+        found = true;
+      }
+    }
+
+    if(found === false){
+      // now you can push
+      favoriteGif.push(favoriteGifObject);
+      this.storage.set(this.localStorageKey, favoriteGif);
+    }
+    
+
+    // if the element has the attribute 'disabled' then don't push it to favorites again 
+    // if(elementClicked.hasAttribute('disabled') === false) {
+      // it has already been added to favorite so don't do that again :) 
+      // elementClicked.setAttribute('disabled', 'disabled')
+      // favoriteGif.push(favoriteGifObject)
+      // insert updated array to local storage
+      // this.storage.set(this.localStorageKey, favoriteGif);
+    // }
+    
+    console.log(this.storage.get(this.localStorageKey) || 'LocaL storage is empty');
   }
 
   ngOnInit() {
@@ -42,8 +64,8 @@ export class ResultsComponent implements OnInit {
     // the results view will have a ng if looping through the results
   }
 
-  displayResults = () => {
-    return this.results;
+  deleteFromLocalStorage = () => {
+    this.storage.remove(this.localStorageKey)
   }
 
   submit = () => {
