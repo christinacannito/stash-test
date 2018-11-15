@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GiphyApiService {
   apiKey = 'TzPDDmLNeHPtLo29ejVY6oOQEZxMHI1l';
-  // giphyRequest = 'http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=';
   giphyRequest = 'http://api.giphy.com/v1/gifs/search?q=';
   fullRequestUrl = this.giphyRequest + this.apiKey;
   userRequest = '';
@@ -18,9 +17,18 @@ export class GiphyApiService {
 
   giphCall = (keyWord: string) => {
     this.userRequest = this.giphyRequest + keyWord + '&api_key=' + this.apiKey;
-    this.results = this.http.get(this.userRequest).subscribe(function(data) { console.log('data: ', data); });
-    console.log('this results in api call: ', this.results.data);
-    return this.results;
+    this.results = this.http.get(this.userRequest).subscribe(function(data) { 
+      console.log('data: ', data); 
+    });
+    console.log('this results in api call: ', this.results);
+
+    let self = this;
+
+    return new Promise((resolve, reject) => {
+      self.http.get(this.userRequest).subscribe(function(data) {
+        resolve(data)
+      })
+    });
   }
 
   displayResults = () => {

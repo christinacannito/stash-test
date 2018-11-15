@@ -5,8 +5,14 @@
       <input type="text" placeholder="Search" name="searchWord" [(ngModel)]="searchWord">
       <button (click)="submit()">Search</button>
     </form>
-    <!-- <div *ngFor()>
-
-    </div> -->
+    <div *ngFor="let result of results;">
+      <div class="imageContainer">
+        <img id="{{result['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{result['images']['preview_gif']['url']}}">
+      </div>  
+    </div>
   </article>
+  <!-- <article>
+    <p>clear storage</p>
+    <button (click)="deleteFromLocalStorage()">Clear storage</button>
+  </article> -->
 </section>

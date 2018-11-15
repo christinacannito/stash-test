@@ -1,3 +1,5 @@
-<p>
-  favorites works!
-</p>
+<div *ngFor="let favorite of allFavorites;">
+  <div class="imageContainer">
+    <img id="{{favorite['id']}}" (click)="deleteFavorite(favorite)" class="resultImg" width="100px" height="auto" src="{{favorite['images']['preview_gif']['url']}}">
+  </div>  
+</div>
