@@ -1,4 +1,4 @@
-.resultsLeft{
+#resultsLeft{
     width: 60%;
     float: left;
     #backgroundImg {
@@ -10,7 +10,33 @@
     }
 }
 
-.resultsRight {
+#resultsLeft.active {
+    animation: moveLeft 4 forwards;
+    -webkit-animation: moveLeft 4s forwards;
+    position: relative;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes moveLeft {
+    from {
+        left: 0px;
+    }
+    to {
+        left: -100%;
+    }
+}
+
+/* Standard syntax */
+@keyframes moveLeft {
+    from {
+        left: 0px;
+    }
+    to {
+        left: -100%;
+    }
+}
+
+#resultsRight {
     width: 40%;
     height: 100vh;
     display: inline-block;
@@ -20,6 +46,32 @@
         position: absolute;
         top: 40%;
         left: 30%;
+    }
+}
+
+#resultsRight.active {
+    animation: moveRight 4 forwards;
+    -webkit-animation: moveRight 4s forwards;
+    position: relative;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes moveRight {
+    from {
+        right: 0px;
+    }
+    to {
+        right: -100%;
+    }
+}
+
+/* Standard syntax */
+@keyframes moveRight {
+    from {
+        right: 0px;
+    }
+    to {
+        right: -100%;
     }
 }
 
@@ -48,5 +100,62 @@
     &:hover {
         cursor: pointer;
         background-color:#ca8553;
+    }
+}
+
+#resetSearch {
+    display: block;
+}
+
+#resultsContainer {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    .imageContainer {
+        display: inline-block;
+        width: 100%;
+    }
+    div {
+        // display: inline-block;
+        float: left;
+        width: 20%;
+        height: 20vh;
+        img {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}
+
+#resultsContainer > div.wrap {
+    display: inline-block;
+    clear: both;
+}
+
+#resultsContainer.active {
+    animation: changeOpacity 9s forwards;
+    -webkit-animation: changeOpacity 9s forwards;
+    
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes changeOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Standard syntax */
+@keyframes changeOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

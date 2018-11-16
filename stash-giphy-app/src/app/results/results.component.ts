@@ -16,6 +16,7 @@ export class ResultsComponent implements OnInit {
   todoItem = '';
   allFavorites;
   randomGifObject;
+  showResults: boolean = false;
   localStorageKey = 'favoriteGifs';
 
   constructor(private gifservice: GiphyApiService, @Inject(SESSION_STORAGE) private storage: StorageService) { }
@@ -68,11 +69,32 @@ export class ResultsComponent implements OnInit {
   submit = () => {
     console.log('search word: ', this.searchWord);
     let self = this;
+    let resultsLeft = document.getElementById('resultsLeft');
+    let resultsRight = document.getElementById('resultsRight');
+    let resultsContainer = document.getElementById('resultsContainer')
     this.gifservice.giphCall(this.searchWord).then(function(data){
       console.log('now in a promise, data: ', data['data']); // this is an array 
       self.results = data['data']
       console.log('zero index: ', self.results[0])
+      
+      // here you should add some css to hide and show the home screen form and the results
+      resultsLeft.classList.add('active')
+      resultsRight.classList.add('active')
+      resultsContainer.classList.add('active')
+      // self.showResults = true;
+
+      // then results should go from hidden to shown
+
       return self.results;
     });
+  }
+
+  resetForm = () => {
+    let resultsLeft = document.getElementById('resultsLeft');
+    let resultsRight = document.getElementById('resultsRight');
+    let resultsContainer = document.getElementById('resultsContainer')
+    resultsLeft.classList.remove('active')
+    resultsRight.classList.remove('active')
+    resultsContainer.classList.remove('active')
   }
 }
