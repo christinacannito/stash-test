@@ -15,6 +15,7 @@ export class ResultsComponent implements OnInit {
   searchWord;
   todoItem = '';
   allFavorites;
+  randomGifObject;
   localStorageKey = 'favoriteGifs';
 
   constructor(private gifservice: GiphyApiService, @Inject(SESSION_STORAGE) private storage: StorageService) { }
@@ -52,7 +53,12 @@ export class ResultsComponent implements OnInit {
     // console.log('results: ', this.results);
     // the results view will have a ng if looping through the results
     // generate random gif 
-    this.gifservice.random()
+    let self = this;
+    this.gifservice.random().then(function(randomGif) {
+      console.log('random gif in results component: ', randomGif)
+      return self.randomGifObject = randomGif;
+    })
+    // console.log('random gif object: ', this.randomGifObject)
   }
 
   deleteFromLocalStorage = () => {

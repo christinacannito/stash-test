@@ -1,23 +1,26 @@
 <section>
-  <article>
-    <!-- left side -->
-    <p>gif image will go here</p>
+  <article class="resultsLeft">
+    <!-- <img id="randomImg" *ngIf="randomGifObject !== undefined" width="100%" height="auto" src="{{randomGifObject['data']['images']['original']['url']}}" alt=""> -->
+    <div id="backgroundImg"></div>
   </article>
-  <article>
+  <article class="resultsRight">
     <!-- right side -->
-    <h2>Find your Gif</h2>
-    <form>
-      <input type="text" placeholder="Search" name="searchWord" [(ngModel)]="searchWord">
-      <button (click)="submit()">Search</button>
-    </form>
-    <div *ngFor="let result of results;">
-      <div class="imageContainer">
-        <img id="{{result['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{result['images']['preview_gif']['url']}}">
-      </div>  
+    <div class="formResultContainer">
+      <h1>Find your Gif</h1>
+      <form>
+        <input id="searchField" type="text" placeholder="Search" name="searchWord" [(ngModel)]="searchWord">
+        <button id="submitBtn" (click)="submit()">Search</button>
+      </form>
+      <div *ngFor="let result of results;">
+        <div class="imageContainer">
+          <img id="{{result['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{result['images']['preview_gif']['url']}}">
+        </div>  
+      </div>
     </div>
   </article>
+</section>
+
   <!-- <article>
     <p>clear storage</p>
     <button (click)="deleteFromLocalStorage()">Clear storage</button>
   </article> -->
-</section>
