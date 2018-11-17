@@ -80,6 +80,8 @@ export class ResultsComponent implements OnInit {
       // here you should add some css to hide and show the home screen form and the results
       resultsLeft.classList.add('active')
       resultsRight.classList.add('active')
+      resultsLeft.classList.remove('reset')
+      resultsRight.classList.remove('reset')
       resultsContainer.classList.add('active')
       // self.showResults = true;
 
@@ -96,5 +98,9 @@ export class ResultsComponent implements OnInit {
     resultsLeft.classList.remove('active')
     resultsRight.classList.remove('active')
     resultsContainer.classList.remove('active')
+
+    // add a class that will reset back to the home 
+    resultsLeft.classList.add('reset');
+    resultsRight.classList.add('reset');
   }
 }
