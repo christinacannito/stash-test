@@ -11,7 +11,7 @@ import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 @Injectable()
 export class ResultsComponent implements OnInit {
   resultKeys = Object.keys;
-  results;
+  results = null;
   searchWord;
   todoItem = '';
   allFavorites;

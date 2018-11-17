@@ -1,3 +1,4 @@
+
 <section *ngIf="showResults === false">
   <article id="resultsLeft">
     <!-- <img id="randomImg" *ngIf="randomGifObject !== undefined" width="100%" height="auto" src="{{randomGifObject['data']['images']['original']['url']}}" alt=""> -->
@@ -14,8 +15,8 @@
     </div>
   </article>
 </section>
+<button *ngIf="results !== null" id="resetSearch" (click)="resetForm()">Search again</button>
 <section id="resultsContainer">
-  <button id="resetSearch" (click)="resetForm()">Search again</button>
   <div *ngFor="let result of results; let i = index" [ngClass]="{'wrap' : !(i % 5)}">
     <div class="imageContainer">
       <img id="{{result['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{result['images']['preview_gif']['url']}}">

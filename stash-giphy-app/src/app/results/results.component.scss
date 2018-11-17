@@ -155,27 +155,34 @@
         cursor: pointer;
         background-color:#ca8553;
     }
+    &:focus {
+        outline: none;
+    }
 }
 
 #resetSearch {
     display: block;
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    top: 5px;
+    left: 10px;
+    z-index: 4;
     border: 1px solid #FFF;
     border-radius: 4px;
     background-color: #2E4347;
     color: #fff;
-    padding: 15px;
+    padding: 10px;
     &:hover {
         cursor: pointer;
+    }
+    &:focus {
+        outline: none;
     }
 }    
 
 #resultsContainer {
     opacity: 0;
     position: absolute;
-    top: 0px;
+    top: 35px;
     width: 100%;
     .imageContainer {
         display: inline-block;
@@ -185,7 +192,7 @@
         // display: inline-block;
         float: left;
         width: 20%;
-        height: 20vh;
+        height: 19vh;
         img {
             width: 100%;
             height: 100%;
