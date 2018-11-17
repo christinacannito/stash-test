@@ -19,6 +19,8 @@
 <section id="resultsContainer">
   <div *ngFor="let result of results; let i = index" [ngClass]="{'wrap' : !(i % 5)}">
     <div class="imageContainer">
+      <p id="addToFav">+</p>
+      <p class="toAdd" id="{{result['id'] + 'added'}}">Added!</p>
       <img id="{{result['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{result['images']['preview_gif']['url']}}">
     </div>  
   </div>

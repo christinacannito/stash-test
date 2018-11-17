@@ -43,6 +43,10 @@ export class ResultsComponent implements OnInit {
       // now you can push
       favoriteGif.push(favoriteGifObject);
       this.storage.set(this.localStorageKey, favoriteGif);
+      // then you add teh class active to the correct id 
+      // its the elements id + 'added'
+      console.log('favorite gif Id: ', favoriteGifObject['id'])
+      document.getElementById(favoriteGifObject['id'] + 'added').classList.add('activeAdd')
     }
     
     console.log(this.storage.get(this.localStorageKey) || 'LocaL storage is empty');
