@@ -99,7 +99,6 @@
 #resultsRight.reset {
     animation: moveBackRight 4 forwards;
     -webkit-animation: moveBackRight 4s forwards;
-    position: relative;
     z-index: 1;
 }
 
@@ -254,6 +253,11 @@
 }
 
 @media (max-width: 500px) {
+    #resultsContainer {
+        .activeAdd {
+            font-size: .4em;
+        }
+    }
     #resultsLeft {
         width: 100%;
     }
@@ -297,6 +301,30 @@
         }
         to {
             right: -100%;
+        }
+    }
+
+    #resultsRight.reset {
+        animation: moveBackRight 4 forwards;
+        -webkit-animation: moveBackRight 4s forwards;
+        z-index: 1;
+    }
+    
+    @-webkit-keyframes moveBackRight {
+        from {
+            right: -100%;
+        }
+        to {
+            right: 15%;
+        }
+    }
+    
+    @keyframes moveBackRight {
+        from {
+            right: -100%;
+        }
+        to {
+            right: 15%;
         }
     }
 }

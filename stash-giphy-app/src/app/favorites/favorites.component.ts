@@ -7,18 +7,22 @@ import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-  allFavorites;
+  allFavorites = [];
   localStorageKey = 'favoriteGifs';
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
+    console.log('allFavorites in init: ', this.allFavorites)
     this.showFavoriteItems();
   }
 
   showFavoriteItems = () => {
     this.allFavorites = this.storage.get(this.localStorageKey)
-    console.log('all favorites: ', this.allFavorites)
+    if (this.allFavorites === null) {
+      this.allFavorites = [];
+      return [];
+    }
     return this.allFavorites;
   }
 

@@ -1,5 +1,5 @@
 <section id="favoritesContainer">
-  <div id="emptyFavs" *ngIf="allFavorites.length === 0">
+  <div id="emptyFavs" *ngIf="allFavorites.length === 0 || allFavorites === null">
     <p>Click on some Gifs to favorites!</p>
   </div>
   <div *ngFor="let favorite of allFavorites; let i = index" [ngClass]="{'wrapFav' : !(i % 5)}">
