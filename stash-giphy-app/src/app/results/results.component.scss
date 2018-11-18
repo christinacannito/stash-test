@@ -16,7 +16,6 @@
     position: relative;
 }
 
-/* Safari 4.0 - 8.0 */
 @-webkit-keyframes moveLeft {
     from {
         left: 0px;
@@ -26,7 +25,6 @@
     }
 }
 
-/* Standard syntax */
 @keyframes moveLeft {
     from {
         left: 0px;
@@ -43,7 +41,6 @@
     z-index: 1;
 }
 
-/* Safari 4.0 - 8.0 */
 @-webkit-keyframes moveBackLeft {
     from {
         left: -100%;
@@ -53,7 +50,6 @@
     }
 }
 
-/* Standard syntax */
 @keyframes moveBackLeft {
     from {
         left: -100%;
@@ -82,7 +78,6 @@
     position: relative;
 }
 
-/* Safari 4.0 - 8.0 */
 @-webkit-keyframes moveRight {
     from {
         right: 0px;
@@ -92,7 +87,6 @@
     }
 }
 
-/* Standard syntax */
 @keyframes moveRight {
     from {
         right: 0px;
@@ -105,11 +99,9 @@
 #resultsRight.reset {
     animation: moveBackRight 4 forwards;
     -webkit-animation: moveBackRight 4s forwards;
-    position: relative;
     z-index: 1;
 }
 
-/* Safari 4.0 - 8.0 */
 @-webkit-keyframes moveBackRight {
     from {
         right: -100%;
@@ -119,7 +111,6 @@
     }
 }
 
-/* Standard syntax */
 @keyframes moveBackRight {
     from {
         right: -100%;
@@ -189,13 +180,16 @@
         width: 100%;
         position: relative;
     }
-    #addToFav {
+    .addToFav {
         position: absolute;
         bottom: 5px;
         right: 10px;
         font-weight: bold;
         font-size: 1.5em;
         margin: 0px;
+    }
+    .addToFav.activeAdd {
+        visibility: hidden;
     }
     .toAdd {
         visibility: hidden;
@@ -205,9 +199,13 @@
     }
     .activeAdd {
         visibility: visible;
+        background-color: #FFF;
+        padding: 4px;
+        border-radius: 4px;
+        font-family: 'Montserrat', sans-serif;
+        border: 1px solid #000;
     }
     div {
-        // display: inline-block;
         float: left;
         width: 20%;
         height: 19vh;
@@ -219,6 +217,9 @@
                 cursor: pointer;
             }
         }
+    }
+    .fa-heart {
+        color: #c5495f;
     }
 }
 
@@ -233,7 +234,6 @@
     
 }
 
-/* Safari 4.0 - 8.0 */
 @-webkit-keyframes changeOpacity {
     from {
         opacity: 0;
@@ -243,7 +243,6 @@
     }
 }
 
-/* Standard syntax */
 @keyframes changeOpacity {
     from {
         opacity: 0;
@@ -254,6 +253,11 @@
 }
 
 @media (max-width: 500px) {
+    #resultsContainer {
+        .activeAdd {
+            font-size: .4em;
+        }
+    }
     #resultsLeft {
         width: 100%;
     }
@@ -280,7 +284,6 @@
         position: absolute;
     }
     
-    /* Safari 4.0 - 8.0 */
     @-webkit-keyframes moveRight {
         from {
             top: 26%;
@@ -292,13 +295,36 @@
         }
     }
     
-    /* Standard syntax */
     @keyframes moveRight {
         from {
             right: 27%;
         }
         to {
             right: -100%;
+        }
+    }
+
+    #resultsRight.reset {
+        animation: moveBackRight 4 forwards;
+        -webkit-animation: moveBackRight 4s forwards;
+        z-index: 1;
+    }
+    
+    @-webkit-keyframes moveBackRight {
+        from {
+            right: -100%;
+        }
+        to {
+            right: 15%;
+        }
+    }
+    
+    @keyframes moveBackRight {
+        from {
+            right: -100%;
+        }
+        to {
+            right: 15%;
         }
     }
 }
