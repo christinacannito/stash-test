@@ -252,3 +252,53 @@
         opacity: 1;
     }
 }
+
+@media (max-width: 500px) {
+    #resultsLeft {
+        width: 100%;
+    }
+    #resultsRight {
+        opacity: 1;
+        height: 40vh;
+        position: absolute;
+        z-index: 6;
+        right: 15%;
+        background-color: orange;
+        top: 26%;
+        padding: 14px;
+        border-radius: 4px;
+        width: 60%;
+        .formResultContainer {
+            top: 22%;
+            left: 19%;
+        }
+    }
+
+    #resultsRight.active {
+        animation: moveRight 4 forwards;
+        -webkit-animation: moveRight 4s forwards;
+        position: absolute;
+    }
+    
+    /* Safari 4.0 - 8.0 */
+    @-webkit-keyframes moveRight {
+        from {
+            top: 26%;
+            right: 27%;
+        }
+        to {
+            top: 26%;
+            right: -100%;
+        }
+    }
+    
+    /* Standard syntax */
+    @keyframes moveRight {
+        from {
+            right: 27%;
+        }
+        to {
+            right: -100%;
+        }
+    }
+}
