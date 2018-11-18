@@ -32,6 +32,11 @@ export class FavoritesComponent implements OnInit {
     // reset the array 
     this.allFavorites.splice(indexFavorite, 1)
     this.storage.set(this.localStorageKey, this.allFavorites); // you have to reset localstorage or it save the information
+    let deletedSign = document.getElementById('deleted');
+    deletedSign.classList.add('active')
+    setTimeout(function() {
+      deletedSign.classList.remove('active')
+    }, 1000)
     return  this.allFavorites;
     // this.storage.remove(this.localStorageKey) // remove the individual item
     // localStorage.removeItem(this.allFavorites[indexFavorite]);

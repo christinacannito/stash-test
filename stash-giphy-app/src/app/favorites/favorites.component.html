@@ -1,4 +1,8 @@
 <section id="favoritesContainer">
+  <!-- when a favorite gif gets deleted you should flash deleted message on the screen -->
+  <div class="" id="deleted">
+    <p class="deletedTxt">To delete from favorites, just click on the image!</p>
+  </div>
   <div *ngFor="let favorite of allFavorites; let i = index" [ngClass]="{'wrapFav' : !(i % 5)}">
     <div class="imageContainer">
       <img id="{{favorite['id']}}" (click)="deleteFavorite(favorite)" class="resultImg" width="100px" height="auto" src="{{favorite['images']['preview_gif']['url']}}">
