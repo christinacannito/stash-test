@@ -37,7 +37,11 @@
     clear: both;
 }
 
-
+@media (max-width: 330px) { 
+    #favoritesContainer #deleted {
+        width: 40%;
+    }
+}
 
 // #deleted {
 //     opacity: 0;
