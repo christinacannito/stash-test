@@ -7,9 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class GiphyApiService {
   apiKey = 'TzPDDmLNeHPtLo29ejVY6oOQEZxMHI1l';
   giphyRequest = 'http://api.giphy.com/v1/gifs/search?q=';
+  giphyBaseUrl = 'http://api.giphy.com/';
+  giphyRandom = 'v1/gifs/random';
   fullRequestUrl = this.giphyRequest + this.apiKey;
   userRequest = '';
+  randomRequest = '';
   results;
+  randomResult;
 
   constructor(private http: HttpClient) {
 
@@ -26,6 +30,23 @@ export class GiphyApiService {
 
     return new Promise((resolve, reject) => {
       self.http.get(this.userRequest).subscribe(function(data) {
+        resolve(data)
+      })
+    });
+  }
+
+  random = () => {
+    // /v1/gifs/random -> end point
+    this.randomRequest = this.giphyBaseUrl + this.giphyRandom + '?api_key=' + this.apiKey;
+    this.randomResult = this.http.get(this.randomRequest).subscribe(function(data) { 
+      console.log('data: ', data); 
+    });
+    console.log('this random in api call: ', this.randomResult);
+
+    let self = this;
+
+    return new Promise((resolve, reject) => {
+      self.http.get(this.randomRequest).subscribe(function(data) {
         resolve(data)
       })
     });

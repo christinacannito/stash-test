@@ -1,18 +1,32 @@
-<section>
-  <article>
-    <h2>Results</h2>
-    <form>
-      <input type="text" placeholder="Search" name="searchWord" [(ngModel)]="searchWord">
-      <button (click)="submit()">Search</button>
-    </form>
-    <div *ngFor="let result of results;">
-      <div class="imageContainer">
-        <img id="{{result['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{result['images']['preview_gif']['url']}}">
-      </div>  
+
+<section *ngIf="showResults === false">
+  <article id="resultsLeft">
+    <!-- <img id="randomImg" *ngIf="randomGifObject !== undefined" width="100%" height="auto" src="{{randomGifObject['data']['images']['original']['url']}}" alt=""> -->
+    <div id="backgroundImg"></div>
+  </article>
+  <article id="resultsRight">
+    <!-- right side -->
+    <div class="formResultContainer">
+      <h1>Find your Gif</h1>
+      <form>
+        <input id="searchField" type="text" placeholder="Search" name="searchWord" [(ngModel)]="searchWord">
+        <button id="submitBtn" (click)="submit()">Search</button>
+      </form>
     </div>
   </article>
+</section>
+<button *ngIf="results !== null" id="resetSearch" (click)="resetForm()">Search again</button>
+<section id="resultsContainer">
+  <div *ngFor="let result of results; let i = index" [ngClass]="{'wrap' : !(i % 5)}">
+    <div class="imageContainer">
+      <p id="addToFav">+</p>
+      <p class="toAdd" id="{{result['id'] + 'added'}}">Added!</p>
+      <img id="{{result['id']}}" (click)="addToFavorites(result)" class="resultImg" width="100px" height="auto" src="{{result['images']['preview_gif']['url']}}">
+    </div>  
+  </div>
+</section>
+
   <!-- <article>
     <p>clear storage</p>
     <button (click)="deleteFromLocalStorage()">Clear storage</button>
   </article> -->
-</section>
