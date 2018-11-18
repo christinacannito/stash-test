@@ -20,6 +20,15 @@
             }
         }
     }
+    #deleted {
+        position: fixed;
+        top: -3px;
+        z-index: 3;
+        text-align: left;
+        left: 2%;
+        width: 60%;
+        font-family: 'Montserrat', sans-serif;
+    }
 }
 
 
@@ -28,12 +37,10 @@
     clear: both;
 }
 
-#deleted {
-    position: fixed;
-    top: -9px;
-    z-index: 3;
-    text-align: center;
-    left: 43%;
+@media (max-width: 330px) { 
+    #favoritesContainer #deleted {
+        width: 40%;
+    }
 }
 
 // #deleted {
