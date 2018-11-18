@@ -83,5 +83,6 @@ export class ResultsComponent implements OnInit {
 
     resultsLeft.classList.add('reset');
     resultsRight.classList.add('reset');
+    this.results = null;
   }
 }
