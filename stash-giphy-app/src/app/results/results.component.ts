@@ -23,8 +23,6 @@ export class ResultsComponent implements OnInit {
 
   public addToFavorites(favoriteGifObject: object): void {
     const favoriteGif = this.storage.get(this.localStorageKey) || [];
-    console.log('favoriteGif.indexOf(favoriteGifObject): ', favoriteGif.indexOf(favoriteGifObject))
-    console.log('favoriteGif[0] === favoriteGif[1]: ', favoriteGif[0] == favoriteGif[1])
     let found: boolean = false;
     for(let i = 0; i < favoriteGif.length; i++) {
       if(favoriteGif[i]['id'] === favoriteGifObject['id']){
@@ -35,7 +33,6 @@ export class ResultsComponent implements OnInit {
     if(found === false){
       favoriteGif.push(favoriteGifObject);
       this.storage.set(this.localStorageKey, favoriteGif);
-      console.log('favorite gif Id: ', favoriteGifObject['id'])
       document.getElementById(favoriteGifObject['id'] + 'added').classList.add('activeAdd')
       document.getElementById(favoriteGifObject['id'] + 'remove').classList.add('activeAdd')
     }
@@ -44,7 +41,6 @@ export class ResultsComponent implements OnInit {
   ngOnInit = () => {
     let self = this;
     this.gifservice.random().then(function(randomGif) {
-      console.log('random gif in results component: ', randomGif)
       return self.randomGifObject = randomGif;
     })
   }
@@ -54,15 +50,12 @@ export class ResultsComponent implements OnInit {
   }
 
   submit = () => {
-    console.log('search word: ', this.searchWord);
     let self = this;
     let resultsLeft = document.getElementById('resultsLeft');
     let resultsRight = document.getElementById('resultsRight');
     let resultsContainer = document.getElementById('resultsContainer')
     this.gifservice.giphCall(this.searchWord).then(function(data){
-      console.log('now in a promise, data: ', data['data']);
       self.results = data['data']
-      console.log('zero index: ', self.results[0])
       
       resultsLeft.classList.add('active')
       resultsRight.classList.add('active')

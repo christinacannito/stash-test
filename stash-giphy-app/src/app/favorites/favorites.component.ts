@@ -13,7 +13,6 @@ export class FavoritesComponent implements OnInit {
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
-    console.log('allFavorites in init: ', this.allFavorites)
     this.showFavoriteItems();
   }
 
@@ -28,8 +27,6 @@ export class FavoritesComponent implements OnInit {
 
   deleteFavorite = (favoriteObject: object) => {
     let indexFavorite = this.allFavorites.indexOf(favoriteObject)
-    console.log('found index of favorite: ', indexFavorite)
-    console.log('his.allFavorites[indexFavorite]: ', this.allFavorites[indexFavorite])
     this.allFavorites.splice(indexFavorite, 1)
     this.storage.set(this.localStorageKey, this.allFavorites);
     return  this.allFavorites;
