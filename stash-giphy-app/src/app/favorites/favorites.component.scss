@@ -5,6 +5,7 @@
     .imageContainer {
         display: inline-block;
         width: 100%;
+        position: relative;
     }
     div {
         float: left;
@@ -36,8 +37,22 @@
         margin-top: 15%;
         padding: 0 5% 0 5%;
     }
+    .trashIcon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #000;
+        border-radius: 50%;
+        bottom: 5px;
+        right: 5px;
+        .fa-trash {
+            color: #FFF;
+            position: relative;
+            left: 3px;
+            top: 2px;
+        }
+    } 
 }
-
 
 #favoritesContainer > div.wrap {
     display: inline-block;

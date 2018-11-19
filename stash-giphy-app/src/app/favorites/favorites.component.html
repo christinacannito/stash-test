@@ -1,10 +1,13 @@
 <section id="favoritesContainer">
-  <div id="emptyFavs" *ngIf="allFavorites.length === 0 || allFavorites === null">
-    <p>Click on some Gifs to favorites!</p>
-  </div>
-  <div *ngFor="let favorite of allFavorites; let i = index" [ngClass]="{'wrapFav' : !(i % 5)}">
-    <div class="imageContainer">
-      <img id="{{favorite['id']}}" (click)="deleteFavorite(favorite)" class="resultImg" width="100px" height="auto" src="{{favorite['images']['preview_gif']['url']}}">
-    </div>  
-  </div>
+  <article>
+    <div id="emptyFavs" *ngIf="allFavorites.length === 0 || allFavorites === null">
+      <p>Click on some Gifs to favorites!</p>
+    </div>
+    <div *ngFor="let favorite of allFavorites; let i = index" [ngClass]="{'wrapFav' : !(i % 5)}">
+      <div class="imageContainer">
+        <div class="trashIcon"><i class="fa fa-trash"></i></div>
+        <img id="{{favorite['id']}}" (click)="deleteFavorite(favorite)" class="resultImg" width="100px" height="auto" src="{{favorite['images']['preview_gif']['url']}}">
+      </div>  
+    </div>
+  </article>
 </section>
